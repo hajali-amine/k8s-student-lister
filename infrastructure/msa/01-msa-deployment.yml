@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-a-deployment
+  labels:
+    app: msa
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: microservice-a
+  template:
+    metadata:
+      labels:
+        app: microservice-a
+    spec:
+      containers:
+      - name: microservice-a
+        image: aminehajali/msa
+        env:
+          - name: DS_HOST
+            value: microservice-b-svc.ms-b-ns.svc.cluster.local:80
+          - name: HOST
+            value: 0.0.0.0
+          - name: PORT
+            value: "5000"
+        ports:
+        - containerPort: 5000

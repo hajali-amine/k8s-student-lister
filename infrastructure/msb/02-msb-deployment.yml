@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice-b-deployment
+  namespace: ms-b-ns
+  labels:
+    app: msb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: microservice-b
+  template:
+    metadata:
+      labels:
+        app: microservice-b
+    spec:
+      containers:
+      - name: microservice-b
+        image: aminehajali/msb
+        env:
+          - name: HOSTNAME
+            value: 0.0.0.0
+          - name: PORT
+            value: "8080"
+        ports:
+        - containerPort: 8080

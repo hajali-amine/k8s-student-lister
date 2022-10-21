@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ms-a
+spec:
+  rules:
+  - host: students.gl5
+    http:
+      paths:
+      - backend:
+          service:
+            name: microservice-a-svc
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer: {}

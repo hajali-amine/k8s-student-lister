@@ -17,10 +17,14 @@ func main() {
 	var dataServerHost string = utils.GetEnv("DS_HOST", "localhost:8080")
 
 	r.GET("/", func(c *gin.Context) {
+		c.String(http.StatusOK, "hello")
+	})
+
+	r.GET("/ms-b", func(c *gin.Context) {
 		name := c.DefaultQuery("name", "")
 		class := c.DefaultQuery("class", "")
 		option := c.DefaultQuery("option", "")
-		group := c.DefaultQuery("1", "0")
+		group := c.DefaultQuery("group", "0")
 
 		requestURL := fmt.Sprintf(
 			"http://%s/students?name=%s&class=%s&option=%s&group=%s",
