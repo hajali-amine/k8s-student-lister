@@ -15,6 +15,6 @@ Both of these micro-services are deployed on a kubernetes cluster, in which they
     align="center"
 >
     <img
-        src="./assets/diagral.drawio.png" alt="diagram"
+        src="./assets/diagram.drawio.png" alt="diagram"
     />
 </p>
